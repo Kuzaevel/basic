@@ -14,14 +14,30 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'qweqweqwe',
+            'cookieValidationKey' => 'Sevq3Heu_Zw9QVNhp3QY6A-RAZAY3HIt',
+
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+                'application/xml' => 'yii\web\XmlParser'
+            ]
+        ],
+        'response' => [
+            'formatters' => [
+                'json' => [
+                    'class' => 'yii\web\JsonResponseFormatter',
+                    'prettyPrint' => YII_DEBUG,
+                    'encodeOptions' => JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE,
+                ],
+            ],
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
             'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
+//            'enableAutoLogin' => true,
+            'enableAutoLogin' => false,
+            'enableSession' => false // add
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -43,14 +59,21 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-            ],
+                'auth' => 'site/login',
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => ['user', 'author', 'book'],
+                    'pluralize' => false
+                ],
+//                ['class' => 'yii\rest\UrlRule', 'controller' => 'book']
+            ]
         ],
-        */
+
     ],
     'params' => $params,
 ];
@@ -69,6 +92,7 @@ if (YII_ENV_DEV) {
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['*'],
     ];
 }
 
