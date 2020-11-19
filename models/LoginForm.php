@@ -38,9 +38,9 @@ class LoginForm extends Model
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
-            $user->setPassword($this->password);
-//            if (!$user || !$user->validatePassword($this->password)) {
-              if (!$user || !$user->validatePasswordNoHash($this->password)) {
+//            $hash = $user->setPassword($this->password);
+            if (!$user || !$user->validatePassword($this->password)) {
+          //if (!$user || !$user->validatePasswordNoHash($this->password)) {
                 $this->addError($attribute, 'Incorrect username or password.');
             }
         }

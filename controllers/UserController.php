@@ -3,20 +3,19 @@
 
 namespace app\controllers;
 
-use common\models\Post;
 use yii\rest\ActiveController;
 use app\models\User;
 
-/*use Yii;
+use Yii;
 use yii\helpers\Url;
-use yii\web\ServerErrorHttpException;*/
+use yii\web\ServerErrorHttpException;
 
 
 class UserController extends ActiveController
 {
     public $modelClass = User::class;
 
-/*    public function actions()
+    public function actions()
     {
         $actions = parent::actions();
         unset($actions['create']);
@@ -29,7 +28,6 @@ class UserController extends ActiveController
         $model = new User;
         $model->load(Yii::$app->getRequest()->getBodyParams(), '');
         $model->setPassword($model->password);
-        $model->password = '';
         if ($model->save()) {
             $response = Yii::$app->getResponse();
             $response->setStatusCode(201);
@@ -46,11 +44,10 @@ class UserController extends ActiveController
         $model = User::findIdentity($id);
         $model->load(Yii::$app->getRequest()->getBodyParams(), '');
         $model->setPassword($model->password);
-        $model->password = '';
         if ($model->save() === false && !$model->hasErrors()) {
             throw new ServerErrorHttpException('Failed to update the object for unknown reason.');
         }
         return $model;
-    }*/
+    }
 
 }
