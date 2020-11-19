@@ -31,11 +31,11 @@ class Book extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_author', 'year'], 'integer'],
+            [['id','id_author'], 'integer'],
             [['price'], 'number'],
             [['name'], 'string', 'max' => 100],
             [['id_author'], 'exist', 'skipOnError' => true, 'targetClass' => Author::className(), 'targetAttribute' => ['id_author' => 'id']],
-            [['id_author', 'year', 'name', 'price'], 'required'],
+            [['id_author', 'name', 'price'], 'required'],
         ];
     }
 
