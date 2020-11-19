@@ -5,6 +5,7 @@ namespace app\controllers;
 
 use app\controllers\BaseApiController;
 
+use yii\filters\auth\HttpBearerAuth;
 use yii\rest\ActiveController;
 use app\models\Book;
 use yii\data\ActiveDataFilter;
@@ -15,6 +16,16 @@ use Yii;
 class BookController extends ActiveController
 {
     public $modelClass = Book::class;
+
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        $behaviors['authenticator']['authMethods'] = [
+            HttpBearerAuth::className(),
+        ];
+
+        return $behaviors;
+    }
 
     public function actions()
     {

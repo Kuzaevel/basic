@@ -3,6 +3,7 @@
 
 namespace app\controllers;
 
+use yii\filters\auth\HttpBearerAuth;
 use yii\rest\ActiveController;
 use app\models\User;
 
@@ -14,6 +15,17 @@ use yii\web\ServerErrorHttpException;
 class UserController extends ActiveController
 {
     public $modelClass = User::class;
+
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        $behaviors['authenticator']['only'] = ['index', 'view', 'update', 'delete'];
+        $behaviors['authenticator']['authMethods'] = [
+            HttpBearerAuth::className(),
+        ];
+
+        return $behaviors;
+    }
 
     public function actions()
     {
