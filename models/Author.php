@@ -53,6 +53,11 @@ class Author extends \yii\db\ActiveRecord
         return $this->hasMany(Book::className(), ['id_author' => 'id']);
     }
 
+    public function getGenres()
+    {
+        return $this->hasMany(Genre::className(), ['id' => 'id_genre'])->viaTable('book', ['id_author' => 'id']);
+    }
+
     public function fields()
     {
         return [
@@ -64,7 +69,8 @@ class Author extends \yii\db\ActiveRecord
     public function extraFields()
     {
         return [
-            'books' => 'books' // get from  getAuthor
+            'books' => 'books', // get from  getAuthor
+            'genres' => 'genres'
         ];
     }
 

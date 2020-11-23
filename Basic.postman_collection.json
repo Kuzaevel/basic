@@ -467,7 +467,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://basic.host1297870.ru/user",
+					"raw": "http://basic.host1297870.ru/author",
 					"protocol": "http",
 					"host": [
 						"basic",
@@ -475,7 +475,43 @@
 						"ru"
 					],
 					"path": [
-						"user"
+						"author"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Список Авторов С Жанрами в кот. публиковал книги",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://basic.host1297870.ru/author?expand=genres",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"author"
+					],
+					"query": [
+						{
+							"key": "expand",
+							"value": "genres"
+						}
 					]
 				}
 			},
@@ -733,7 +769,7 @@
 			"response": []
 		},
 		{
-			"name": "Список Жанров с дополнительными параметрами Copy",
+			"name": "Список Жанров с дополнительными параметрами",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -760,7 +796,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://basic.host1297870.ru/genre?expand=authors",
+					"raw": "http://basic.host1297870.ru/genre?sort=-id&per-page=2&page=1&fields=name&expand=books",
 					"protocol": "http",
 					"host": [
 						"basic",
@@ -772,8 +808,24 @@
 					],
 					"query": [
 						{
+							"key": "sort",
+							"value": "-id"
+						},
+						{
+							"key": "per-page",
+							"value": "2"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "fields",
+							"value": "name"
+						},
+						{
 							"key": "expand",
-							"value": "authors"
+							"value": "books"
 						}
 					]
 				},
