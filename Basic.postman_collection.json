@@ -1,0 +1,896 @@
+{
+	"info": {
+		"_postman_id": "8555a9b3-8daf-4761-bab9-1345b1d1372f",
+		"name": "Basic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Регистрация пользователя",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin_2\",\r\n    \"password\": \"admin_2\",\r\n    \"email\": \"admin_2@mail.ru\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://basic.host1297870.ru/user",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Авторизация",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://basic.host1297870.ru/auth",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"auth"
+					]
+				},
+				"description": "Регистрация пользователя\r\n(работает без авторизации)"
+			},
+			"response": []
+		},
+		{
+			"name": "Список пользователей",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://basic.host1297870.ru/user",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Список пользователей с дополнительными параметрами",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://basic.host1297870.ru/user?sort=-id&per-page=1&page=1&fields=username",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "-id"
+						},
+						{
+							"key": "per-page",
+							"value": "1"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "fields",
+							"value": "username"
+						}
+					]
+				},
+				"description": "+ сортировка \r\n+ пагинация\r\n+ отображение только указанным полей"
+			},
+			"response": []
+		},
+		{
+			"name": "Редактирование пользователя",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"uuser1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://basic.host1297870.ru/user/3",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"user",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Удаление пользователя",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"uuser1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://basic.host1297870.ru/user/5",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"user",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Список Книг",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://basic.host1297870.ru/user",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Список Книг с дополнительными параметрами",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"filter\": {\r\n        \"and\": [\r\n            {\r\n                \"price\": {\r\n                    \"gte\": 800\r\n                }\r\n            }\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://basic.host1297870.ru/book?sort=-id&per-page=2&page=1&fields=name,price&expand=author",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"book"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "-id"
+						},
+						{
+							"key": "per-page",
+							"value": "2"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "fields",
+							"value": "name,price"
+						},
+						{
+							"key": "expand",
+							"value": "author"
+						}
+					]
+				},
+				"description": "+ сортировка\r\n+ пагинация\r\n+ фильтрация (json в body запроса)\r\n+ только выбранные поля\r\n+ связанные данные"
+			},
+			"response": []
+		},
+		{
+			"name": "Добавление книги",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"id_author\": 3,\r\n        \"name\": \"Visual Studio 12: A Comprehensive Guide\",\r\n        \"price\": 3808,\r\n        \"id_genre\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://basic.host1297870.ru/book",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"book"
+					]
+				},
+				"description": "+ сортировка\r\n+ пагинация\r\n+ фильтрация\r\n+ только выбранные поля\r\n+ связанные данные"
+			},
+			"response": []
+		},
+		{
+			"name": "Редактирование книги",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"id_author\": 3,\r\n        \"name\": \"Visual Studio 12: A Comprehensive Guide\",\r\n        \"price\": 3808,\r\n        \"id_genre\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://basic.host1297870.ru/book",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"book"
+					]
+				},
+				"description": "+ сортировка\r\n+ пагинация\r\n+ фильтрация\r\n+ только выбранные поля\r\n+ связанные данные"
+			},
+			"response": []
+		},
+		{
+			"name": "Удаление книги",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"id_author\": 3,\r\n        \"name\": \"Visual Studio 12: A Comprehensive Guide\",\r\n        \"price\": 3808,\r\n        \"id_genre\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://basic.host1297870.ru/book/13",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"book",
+						"13"
+					]
+				},
+				"description": "+ сортировка\r\n+ пагинация\r\n+ фильтрация\r\n+ только выбранные поля\r\n+ связанные данные"
+			},
+			"response": []
+		},
+		{
+			"name": "Список Авторов",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://basic.host1297870.ru/user",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Список Авторов с дополнительными параметрами Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"filter\": {\r\n        \"fio\": {\r\n            \"like\":\"ga\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://basic.host1297870.ru/author?sort=-id&per-page=2&page=1&fields=fio&expand=books",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"author"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "-id"
+						},
+						{
+							"key": "per-page",
+							"value": "2"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "fields",
+							"value": "fio"
+						},
+						{
+							"key": "expand",
+							"value": "books"
+						}
+					]
+				},
+				"description": "+ сортировка\r\n+ пагинация\r\n+ фильтрация (json в body запроса)\r\n+ только выбранные поля\r\n+ связанные данные"
+			},
+			"response": []
+		},
+		{
+			"name": "Добавление Автора",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"fio\": \"Tom Fisher \"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://basic.host1297870.ru/author",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"author"
+					]
+				},
+				"description": "+ сортировка\r\n+ пагинация\r\n+ фильтрация\r\n+ только выбранные поля\r\n+ связанные данные"
+			},
+			"response": []
+		},
+		{
+			"name": "Редактирование Автора",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fio\": \"Tom Fisher Junior\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://basic.host1297870.ru/author/11",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"author",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Удаление Автора",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://basic.host1297870.ru/author/11",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"author",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Список Жанров",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://basic.host1297870.ru/genre",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"genre"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Список Жанров с дополнительными параметрами Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://basic.host1297870.ru/genre?sort=-id&per-page=2&page=1&fields=name&expand=books",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"genre"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "-id"
+						},
+						{
+							"key": "per-page",
+							"value": "2"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "fields",
+							"value": "name"
+						},
+						{
+							"key": "expand",
+							"value": "books"
+						}
+					]
+				},
+				"description": "+ сортировка\r\n+ пагинация\r\n+ фильтрация (json в body запроса)\r\n+ только выбранные поля\r\n+ связанные данные"
+			},
+			"response": []
+		},
+		{
+			"name": "Добавление Жанра",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"fio\": \"Tom Fisher \"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://basic.host1297870.ru/author",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"author"
+					]
+				},
+				"description": "+ сортировка\r\n+ пагинация\r\n+ фильтрация\r\n+ только выбранные поля\r\n+ связанные данные"
+			},
+			"response": []
+		},
+		{
+			"name": "Редактирование Жанра",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Prosas\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://basic.host1297870.ru/genre/8",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"genre",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Удаление Жанра",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://basic.host1297870.ru/genre/9",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"genre",
+						"9"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "jbjtj_cFjatv7Qa8lo3u6vGkLUh4zdlH",
+				"type": "string"
+			}
+		]
+	},
+	"protocolProfileBehavior": {}
+}
