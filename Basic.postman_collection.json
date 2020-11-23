@@ -697,6 +697,42 @@
 			"response": []
 		},
 		{
+			"name": "Список Жанров с Авторами",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "nm-lXNTPcWM0haX83IiLbW5l_xVtwREj",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://basic.host1297870.ru/genre?expand=authors",
+					"protocol": "http",
+					"host": [
+						"basic",
+						"host1297870",
+						"ru"
+					],
+					"path": [
+						"genre"
+					],
+					"query": [
+						{
+							"key": "expand",
+							"value": "authors"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Список Жанров с дополнительными параметрами Copy",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -724,7 +760,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://basic.host1297870.ru/genre?sort=-id&per-page=2&page=1&fields=name&expand=books",
+					"raw": "http://basic.host1297870.ru/genre?expand=authors",
 					"protocol": "http",
 					"host": [
 						"basic",
@@ -736,24 +772,8 @@
 					],
 					"query": [
 						{
-							"key": "sort",
-							"value": "-id"
-						},
-						{
-							"key": "per-page",
-							"value": "2"
-						},
-						{
-							"key": "page",
-							"value": "1"
-						},
-						{
-							"key": "fields",
-							"value": "name"
-						},
-						{
 							"key": "expand",
-							"value": "books"
+							"value": "authors"
 						}
 					]
 				},
