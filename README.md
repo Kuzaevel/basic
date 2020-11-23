@@ -2,16 +2,18 @@ RestFull Api
 
 Книжная полка
 
-Схема БД:
-ShemeBD.jpg
+Схема БД: ShemeBD.jpg
+https://github.com/Kuzaevel/basic/blob/master/ShemeBD.jpg
 
+
+Установка приложения:
 
 git clone https://github.com/Kuzaevel/basic.git
 
 Устанавливаем зависимости с помощью composer
 - composer install
 
-Восстановить базу данных из файла в корне проекта
+Восстанавливаем базу данных из файла в корне проекта
 - basic_server.sql 
 
 
