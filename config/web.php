@@ -67,7 +67,7 @@ $config = [
                 'auth' => 'site/login',
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => ['user', 'author', 'book'],
+                    'controller' => ['user', 'author', 'book', 'genre'],
                     'pluralize' => false
                 ],
 //                ['class' => 'yii\rest\UrlRule', 'controller' => 'book']

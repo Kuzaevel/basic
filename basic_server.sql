@@ -109,6 +109,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(50) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `status` int(11) NOT NULL DEFAULT '10',
+   `created_at` int(11) NULL DEFAULT NULL,
+   `updated_at` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
