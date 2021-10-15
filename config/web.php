@@ -65,6 +65,8 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 'auth' => 'site/login',
+                'index' =>  'main/index',
+                '/' => 'main/index',
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => ['user', 'author', 'book', 'genre'],
