@@ -1,18 +1,18 @@
 <?php
-namespace app\controllers;
 
-use yii\data\ActiveDataFilter;
-use yii\data\ActiveDataProvider;
+namespace app\modules\front\controllers;
+
 use yii\filters\auth\HttpBearerAuth;
 use yii\rest\ActiveController;
-use app\models\Author;
+use app\models\Genre;
+use yii\data\ActiveDataFilter;
+use yii\data\ActiveDataProvider;
 
 use Yii;
 
-class AuthorController extends ActiveController
+class GenreController extends ActiveController
 {
-
-    public $modelClass = Author::class;
+    public $modelClass = Genre::class;
 
     public function behaviors()
     {
@@ -33,7 +33,7 @@ class AuthorController extends ActiveController
 
     public function prepareDataProvider()
     {
-        $filter = new ActiveDataFilter( [
+        $filter = new ActiveDataFilter([
             'searchModel' => $this->modelClass
         ]);
 
@@ -49,7 +49,7 @@ class AuthorController extends ActiveController
             }
         }
 
-        $query = Author::find();
+        $query = Genre::find();
         if ($filterCondition !== null) {
             $query->andWhere($filterCondition);
         }
@@ -57,12 +57,5 @@ class AuthorController extends ActiveController
         return new ActiveDataProvider([
             'query' => $query,
         ]);
-    }
-
-    protected function verbs()
-    {
-        return [
-            'index' => ['get'],
-        ];
     }
 }

@@ -1,27 +1,25 @@
 <?php
 
 
-namespace app\controllers;
-
-use app\controllers\BaseApiController;
+namespace app\modules\front\controllers;
 
 use yii\filters\auth\HttpBearerAuth;
 use yii\rest\ActiveController;
-use app\models\Genre;
+use app\models\Book;
 use yii\data\ActiveDataFilter;
 use yii\data\ActiveDataProvider;
 
 use Yii;
 
-class GenreController extends ActiveController
+class BookController extends ActiveController
 {
-    public $modelClass = Genre::class;
+    public $modelClass = Book::class;
 
     public function behaviors()
     {
         $behaviors = parent::behaviors();
         $behaviors['authenticator']['authMethods'] = [
-            HttpBearerAuth::className(),
+            //HttpBearerAuth::className(),
         ];
 
         return $behaviors;
@@ -33,6 +31,17 @@ class GenreController extends ActiveController
         $actions['index']['prepareDataProvider'] = [$this, 'prepareDataProvider'];
         return $actions;
     }
+
+    public function actionIndex1()
+    {
+        return 'api';
+    }
+
+    public function actionIndex2($id = 2)
+    {
+        return 'ap2i ' . $id;
+    }
+
 
     public function prepareDataProvider()
     {
@@ -52,7 +61,7 @@ class GenreController extends ActiveController
             }
         }
 
-        $query = Genre::find();
+        $query = Book::find();
         if ($filterCondition !== null) {
             $query->andWhere($filterCondition);
         }

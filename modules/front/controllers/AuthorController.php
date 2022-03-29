@@ -1,21 +1,19 @@
 <?php
 
+namespace app\modules\front\controllers;
 
-namespace app\controllers;
-
-use app\controllers\BaseApiController;
-
-use yii\filters\auth\HttpBearerAuth;
-use yii\rest\ActiveController;
-use app\models\Book;
 use yii\data\ActiveDataFilter;
 use yii\data\ActiveDataProvider;
+use yii\filters\auth\HttpBearerAuth;
+use yii\rest\ActiveController;
+use app\models\Author;
 
 use Yii;
 
-class BookController extends ActiveController
+class AuthorController extends ActiveController
 {
-    public $modelClass = Book::class;
+
+    public $modelClass = Author::class;
 
     public function behaviors()
     {
@@ -36,7 +34,7 @@ class BookController extends ActiveController
 
     public function prepareDataProvider()
     {
-        $filter = new ActiveDataFilter([
+        $filter = new ActiveDataFilter( [
             'searchModel' => $this->modelClass
         ]);
 
@@ -52,7 +50,7 @@ class BookController extends ActiveController
             }
         }
 
-        $query = Book::find();
+        $query = Author::find();
         if ($filterCondition !== null) {
             $query->andWhere($filterCondition);
         }
@@ -60,5 +58,12 @@ class BookController extends ActiveController
         return new ActiveDataProvider([
             'query' => $query,
         ]);
+    }
+
+    protected function verbs()
+    {
+        return [
+            'index' => ['get'],
+        ];
     }
 }

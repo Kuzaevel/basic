@@ -11,6 +11,13 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+
+    'modules' => [
+        'front' => [
+            'class' => 'app\modules\front\Module',
+        ],
+    ],
+
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -64,15 +71,11 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'auth' => 'site/login',
-                'index' =>  'main/index',
-                '/' => 'site/index',
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => ['user', 'author', 'book', 'genre'],
+                    'controller' => ['front/author', 'front/book', 'front/genre'],
                     'pluralize' => false
                 ],
-//                ['class' => 'yii\rest\UrlRule', 'controller' => 'book']
             ]
         ],
 
@@ -94,7 +97,8 @@ if (YII_ENV_DEV) {
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
-        'allowedIPs' => ['*'],
+        //'allowedIPs' => ['*'],
+        //http://{ip}/gii/module
     ];
 }
 
