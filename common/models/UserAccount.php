@@ -147,14 +147,21 @@ class UserAccount extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        echo $type; die();
-
         if ($type === self::QUERY_AUTH_TYPE) {
             $user = static::find()
-                          ->joinWith('tokens t')
-                          ->andWhere(['t.token' => $token])->one();
-            //->andWhere(['>', 't.expired_at', time()]);
-            if ($user['tokens'][0]['expired_at'] < time()) {
+                          ->andWhere(['token' => $token])
+                          ->andWhere(['is_user_active' => true])
+                          ->andWhere(['is_token_active' => true])
+                          ->one();
+
+            // TODO set data to config
+            $queryTimeTokenDelta = 5184000; // 30 суток
+
+            if(empty($user)) {
+                throw new UnauthorizedHttpException('Token is bad');
+            }
+
+            if ($user['token_expired_at']  + $queryTimeTokenDelta < time()) {
                 throw new UnauthorizedHttpException('Token is expired');
             } else {
                 return $user;
@@ -164,17 +171,14 @@ class UserAccount extends ActiveRecord implements IdentityInterface
                 $jwt = \JOSE_JWT::decode($token);
 
                 // TODO set data to config
-
                 $url                = 'http://192.168.88.243:8088/.well-known/openid-configuration/jwks';
                 $timeTokenDelta     = 86400; //12h //86400; // 24h
                 $timePublicKeyDelta = 43200; //12h //86400; // 24h
                 $jwtEmailField      = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress";
 
-
                 if ($jwt->claims['exp'] + $timeTokenDelta < time()) {
                     throw new \JOSE_Exception_VerificationFailed('Token is expired');
                 }
-
 
                 try {
                     $jwt->verify(PublicKeyStorage::getPublicKey(), $jwt->header['alg']);
@@ -195,9 +199,6 @@ class UserAccount extends ActiveRecord implements IdentityInterface
 
                 $jwt->verify(PublicKeyStorage::getPublicKey(), $jwt->header['alg']);
 
-                //        var_dump($jwt->claims['sub']);
-                //        var_dump($jwt->claims['sub']);
-                //        var_dump($jwt->claims[$jwtEmailField]);
                 return !empty($jwt)
                     ? static::findByEmail($jwt->claims[$jwtEmailField]) // static::findIdentity($jwt->claims['sub'])
                     : null;

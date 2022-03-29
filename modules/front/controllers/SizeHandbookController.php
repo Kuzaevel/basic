@@ -2,6 +2,7 @@
 
 namespace app\modules\front\controllers;
 
+use app\components\MyActiveController;
 use yii\rest\ActiveController;
 use app\common\models\SizeHandbook;
 use yii\data\ActiveDataFilter;
@@ -9,20 +10,9 @@ use yii\data\ActiveDataProvider;
 
 use Yii;
 
-class SizeHandbookController extends ActiveController
+class SizeHandbookController extends MyActiveController
 {
-
     public $modelClass = SizeHandbook::class;
-
-    public function behaviors()
-    {
-        $behaviors = parent::behaviors();
-        $behaviors['authenticator']['authMethods'] = [
-            //HttpBearerAuth::className(),
-        ];
-
-        return $behaviors;
-    }
 
     public function actions()
     {
