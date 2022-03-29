@@ -4,13 +4,13 @@ namespace app\modules\front\controllers;
 
 use Yii;
 use app\components\MyActiveController;
-use app\common\models\SizeHandbook;
+use app\common\models\ConsumableGroupHandbook;
 use yii\data\ActiveDataFilter;
 use yii\data\ActiveDataProvider;
 
-class SizeHandbookController extends MyActiveController
+class ConsumableGroupHandbookController extends MyActiveController
 {
-    public $modelClass = SizeHandbook::class;
+    public $modelClass = ConsumableGroupHandbook::class;
 
     public function actions()
     {
@@ -37,7 +37,7 @@ class SizeHandbookController extends MyActiveController
             }
         }
 
-        $query = SizeHandbook::find();
+        $query = ConsumableGroupHandbook::find();
         if ($filterCondition !== null) {
             $query->andWhere($filterCondition);
         }
