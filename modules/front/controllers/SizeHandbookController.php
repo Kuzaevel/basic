@@ -1,19 +1,18 @@
 <?php
 
-
 namespace app\modules\front\controllers;
 
-use yii\filters\auth\HttpBearerAuth;
 use yii\rest\ActiveController;
-use app\common\models\Book;
+use app\common\models\SizeHandbook;
 use yii\data\ActiveDataFilter;
 use yii\data\ActiveDataProvider;
 
 use Yii;
 
-class BookController extends ActiveController
+class SizeHandbookController extends ActiveController
 {
-    public $modelClass = Book::class;
+
+    public $modelClass = SizeHandbook::class;
 
     public function behaviors()
     {
@@ -31,7 +30,6 @@ class BookController extends ActiveController
         $actions['index']['prepareDataProvider'] = [$this, 'prepareDataProvider'];
         return $actions;
     }
-
 
     public function prepareDataProvider()
     {
@@ -51,7 +49,7 @@ class BookController extends ActiveController
             }
         }
 
-        $query = Book::find();
+        $query = SizeHandbook::find();
         if ($filterCondition !== null) {
             $query->andWhere($filterCondition);
         }
