@@ -2,6 +2,7 @@
 
 namespace app\modules\front\controllers;
 
+use Yii;
 use app\components\MyActiveController;
 use app\common\models\SizeHandbook;
 use yii\web\Response;
