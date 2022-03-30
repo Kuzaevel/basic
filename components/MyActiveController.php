@@ -32,6 +32,7 @@ class MyActiveController extends ActiveController
     {
         $actions = parent::actions();
         $actions['index']['prepareDataProvider'] = [$this, 'prepareDataProvider'];
+        unset($actions['delete']);
         return $actions;
     }
 

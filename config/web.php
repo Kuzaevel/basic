@@ -42,7 +42,6 @@ $config = [
         ],
         'user' => [
             'identityClass' => 'app\common\models\UserAccount',
-//            'identityClass' => 'app\models\User',
             'enableAutoLogin' => false,
             'enableSession' => false // add
         ],
@@ -73,7 +72,9 @@ $config = [
             'rules' => [
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => ['front/author', 'front/book', 'front/genre'],
+                    'controller' => [
+                        'front/*'
+                    ],
                     'pluralize' => false
                 ],
             ]
