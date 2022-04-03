@@ -34,3 +34,5 @@ git clone https://github.com/Kuzaevel/basic.git
 2) в дальнейшем для авторизации используем token
 Authorization->type->Bearer Token
 
+composer config -g -- disable-tls true
+
