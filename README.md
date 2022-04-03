@@ -15,6 +15,8 @@ git clone https://github.com/Kuzaevel/basic.git
 
 Восстанавливаем базу данных из файла в корне проекта
 - basic_server.sql 
+или с помощью миграций
+./yii migrate
 
 
 Примеры запросов в файле в корне проекта:
